@@ -64,11 +64,11 @@ jobs:
         run: |
           rm -f ./.config*
 					touch ./.config
-
-          cat >> .config <<EOF
+					
+					cat >> .config <<EOF
 					CONFIG_TARGET_x86=y
 					EOF
-          
+
 					# 编译UEFI固件:
 					cat >> .config <<EOF
 					CONFIG_EFI_IMAGES=y
@@ -137,7 +137,7 @@ jobs:
 					EOF
 					sed -i 's/^[ \t]*//g' ./.config
 					make defconfig
-	
+
       - name: Make download
         run: |
           make download -j8 || make download -j1 V=s
